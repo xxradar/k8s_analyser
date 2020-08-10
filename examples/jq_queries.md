@@ -10,6 +10,6 @@ cat test.json | jq '.items[].metadata.name'
 
 To select a specific pod name and print out name and uid
 ```
-cat test.json | jq '.items[].metadata | select (.name == "test-6664f97c7f-8n2h9") | [.name, .uid]'
+cat test.json | jq '.items[] | select (.metadata.name == "test-6664f97c7f-8n2h9") | [.metadata.name, .metadata.uid]'
 ```
 
