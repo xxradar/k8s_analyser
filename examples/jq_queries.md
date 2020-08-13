@@ -26,7 +26,6 @@ cat test.json | jq '.items[] | select (.metadata.name == "test-6664f97c7f-8n2h9"
 cat test.json | jq '.items[] | select(.metadata.name | startswith("test")) |  [.metadata.name, .metadata.uid]'
 ```
 
-
 ### Interesting examples found on the internet ...
 ```
 curl example.com/json | jq '.[].properties | select(.type | startswith("dev"))'
