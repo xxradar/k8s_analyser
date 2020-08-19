@@ -26,6 +26,22 @@ cat test.json | jq '.items[] | select (.metadata.name == "test-6664f97c7f-8n2h9"
 cat test.json | jq '.items[] | select(.metadata.name | startswith("test")) |  [.metadata.name, .metadata.uid]'
 ```
 
+### Analyzing ClusterRoleBindings
+```
+  select(
+    .subjects // [] | .[] |
+    [.kind,.namespace,.name] == ["ServiceAccount","kube-system","kube-proxy"]
+  ) |
+  .metadata.name'
+
+
+  kubectl get clusterrolebindings -o json | jq -r '
+  .items[] |
+  select(
+    .subjects // [] | .[] 
+  ) |  [ .roleRef.name, .subjects[].kind, .subjects[].name]'
+```
+
 ### Interesting examples found on the internet ...
 ```
 curl example.com/json | jq '.[].properties | select(.type | startswith("dev"))'
