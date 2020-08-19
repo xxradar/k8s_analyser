@@ -17,6 +17,7 @@ kubectl get clusterrolebindings -o json | jq -r '
     .subjects // [] | .[] 
   ) |  [ .metadata.name, .roleRef.name, .subjects[].kind, .subjects[].name]'
 ```  
+```
 kubectl get rolebindings -A -o json | jq -r '
   .items[] |
   select(
