@@ -1,5 +1,5 @@
 ### Analyzing ClusterRoleBindings
-Find a specific service account
+Find the rolebinding for a specific service account
 ```
 kubectl get clusterrolebindings -o json | jq -r '
   .items[] |
