@@ -31,3 +31,8 @@ cat test.json | jq '.items[] | select(.metadata.name | startswith("test")) |  [.
 ```
 curl example.com/json | jq '.[].properties | select(.type | startswith("dev"))'
 ```
+
+### Getting Name, PodIP and Node
+```
+kubectl get po  -A -o json | jq -rc  '.items[] | [.metadata.name, .status.podIP, .spec.nodeName]'
+```
