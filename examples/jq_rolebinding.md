@@ -31,7 +31,7 @@ kubectl get rolebindings -A -o json | jq -r '
 kubectl get pods  -o json | jq -r '.items[] | {pod_name: .metadata.name, service_account: .spec.serviceAccountName}'
 ```
 ```
-kubectl get pods -n fortinet -o json | jq -rc '.items[] | {pod_name: .metadata.name, service_account: .spec.serviceAccountName, uses_hostPID: (.spec.hostPID // false)}'
+kubectl get pods -n test -o json | jq -rc '.items[] | {pod_name: .metadata.name, service_account: .spec.serviceAccountName, uses_hostPID: (.spec.hostPID // false)}'
 ```
 
 ### Script (WIP)
