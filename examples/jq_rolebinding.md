@@ -24,3 +24,9 @@ kubectl get rolebindings -A -o json | jq -r '
     .subjects // [] | .[] 
   ) |  [ .metadata.name, .roleRef.name, .subjects[].kind, .subjects[].name]'  
 ```
+
+
+### Troubleshooting SA
+```
+kubectl get pods  -o json | jq -r '.items[] | {pod_name: .metadata.name, service_account: .spec.serviceAccountName}'
+```
